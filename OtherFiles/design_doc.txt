@@ -1,0 +1,18 @@
+Week #2: Walking Trees
+
+Mechanics:
+
+MVP:
+
+Logger vs Trees
+Logger has a chainsaw, has to cut down x number of trees, or maybe all of them?
+Logger is fast, maybe has a dash.
+
+Trees have to run away, can plant themselves to upgrade themselves.  But leaves them vulnarable to logging!
+Trees start as sapling that can only run, then upgrade to baby tree that can vine wip, then big tree that can shoot leaves?
+Trees win by killing the logger.
+
+Non MVP:
+
+Choose between logger play or tree play
+Multiplayer?!?!?

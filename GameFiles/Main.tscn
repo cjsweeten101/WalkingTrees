@@ -1,12 +1,26 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://test_background.png" type="Texture" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://Logger/Logger.tscn" type="PackedScene" id=3]
 
-[node name="Main" type="Node2D" index="0"]
+[node name="Main" type="Node2D"]
 
 [node name="Background" type="Sprite" parent="." index="0"]
 
+show_behind_parent = true
+scale = Vector2( 4.41365, 4.109 )
 texture = ExtResource( 1 )
 centered = false
+_sections_unfolded = [ "Visibility" ]
+
+[node name="icon" type="Sprite" parent="." index="1"]
+
+position = Vector2( 5303.2, 3612.82 )
+texture = ExtResource( 2 )
+
+[node name="Logger" parent="." index="2" instance=ExtResource( 3 )]
+
+position = Vector2( 5603.62, 3625.72 )
 
 

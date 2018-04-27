@@ -7,9 +7,11 @@
 custom_solver_bias = 0.0
 extents = Vector2( 27, 12.7299 )
 
-[node name="Chainsaw" type="Sprite" index="0"]
+[node name="Chainsaw" type="Sprite"]
 
+scale = Vector2( 2, 2 )
 texture = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="Area2D" type="Area2D" parent="." index="0"]
 

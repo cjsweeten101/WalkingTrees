@@ -11,6 +11,7 @@ Logger is fast, maybe has a dash.
 Trees have to run away, can plant themselves to upgrade themselves.  But leaves them vulnarable to logging!
 Trees start as sapling that can only run, then upgrade to baby tree that can vine wip, then big tree that can shoot leaves?
 Trees win by killing the logger.
+Trees modulate color from brown->green when planted->walking
 
 Non MVP:
 

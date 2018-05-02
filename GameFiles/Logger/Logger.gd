@@ -3,11 +3,13 @@ extends KinematicBody2D
 var max_speed = 500
 var chainsaw = preload("res://Logger/Chainsaw/Chainsaw.tscn")
 var facing = "right"
+export var current_direction = Vector2()
 
 func _ready():
 	chainsaw = chainsaw.instance()
 	chainsaw.position.x += 64
 	add_child(chainsaw)
+	z_index = 1
 
 func _physics_process(delta):
 	var direction = Vector2()
@@ -24,6 +26,7 @@ func _physics_process(delta):
 		facing = "left"
 	
 	_flip_chainsaw()
+	current_direction = direction.normalized()
 	var current_speed = direction.normalized() * max_speed
 	move_and_slide(current_speed)
 

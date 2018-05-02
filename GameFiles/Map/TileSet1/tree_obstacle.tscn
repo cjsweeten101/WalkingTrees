@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Map/TileSet1/log_obstacle2.png" type="Texture" id=1]
 [ext_resource path="res://Map/TileSet1/Sprite.gd" type="Script" id=2]
@@ -6,19 +6,15 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 96, 32 )
-
-[sub_resource type="RectangleShape2D" id=2]
-
-custom_solver_bias = 0.0
 extents = Vector2( 72, 13 )
 
-[node name="Node2D" type="Node2D" index="0"]
+[node name="tree_obstacle" type="Node2D"]
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
 texture = ExtResource( 1 )
 script = ExtResource( 2 )
+_sections_unfolded = [ "Z Index" ]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Sprite" index="0"]
 
@@ -33,14 +29,10 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/StaticBody2D" index="0"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite/StaticBody2D" index="0"]
 
-position = Vector2( 0, 14 )
-shape = SubResource( 1 )
-_sections_unfolded = [ "Transform", "Visibility" ]
-__meta__ = {
-"_edit_lock_": true
-}
+build_mode = 0
+polygon = PoolVector2Array( -71, -17, -71, 12, -97, 32, -85, 48, -62, 36, -47, 37, -40, 24, -8, 44, 18, 43, 22, 26, 90, 45, 100, 36, 90, 25, 78, 18, 71, -17 )
 
 [node name="Area2D" type="Area2D" parent="Sprite" index="1"]
 
@@ -55,11 +47,7 @@ audio_bus_name = "Master"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/Area2D" index="0"]
 
 position = Vector2( 0, -31 )
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]
-
-[connection signal="area_entered" from="Sprite/Area2D" to="Sprite" method="_on_Area2D_area_entered"]
-
-[connection signal="area_exited" from="Sprite/Area2D" to="Sprite" method="_on_Area2D_area_exited"]
 
 

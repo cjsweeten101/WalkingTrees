@@ -1,26 +1,61 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://test_background.png" type="Texture" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
-[ext_resource path="res://Logger/Logger.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Logger/Logger.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Map/TileSet1/test_tiles.tres" type="TileSet" id=3]
+[ext_resource path="res://Map/TileSet1/tree_obstacle.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Trees/TreeAI.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Trees/Tree.tscn" type="PackedScene" id=6]
 
 [node name="Main" type="Node2D"]
 
 [node name="Background" type="Sprite" parent="." index="0"]
 
+visible = false
 show_behind_parent = true
 scale = Vector2( 4.41365, 4.109 )
 texture = ExtResource( 1 )
 centered = false
 _sections_unfolded = [ "Visibility" ]
 
-[node name="icon" type="Sprite" parent="." index="1"]
-
-position = Vector2( 5303.2, 3612.82 )
-texture = ExtResource( 2 )
-
-[node name="Logger" parent="." index="2" instance=ExtResource( 3 )]
+[node name="Logger" parent="." index="1" instance=ExtResource( 2 )]
 
 position = Vector2( 5603.62, 3625.72 )
+
+[node name="TileMap" type="TileMap" parent="." index="2"]
+
+mode = 0
+tile_set = ExtResource( 3 )
+cell_size = Vector2( 64, 64 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 1
+collision_mask = 1
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray(  )
+
+[node name="tree_obstacle" parent="TileMap" index="0" instance=ExtResource( 4 )]
+
+position = Vector2( 5292.34, 3493.12 )
+
+[node name="TreeAI" parent="." index="3" instance=ExtResource( 5 )]
+
+[node name="Trees" type="Node2D" parent="." index="4"]
+
+[node name="Tree2" parent="Trees" index="0" instance=ExtResource( 6 )]
+
+position = Vector2( 5730.55, 2966.32 )
+
+[node name="Tree1" parent="Trees" index="1" instance=ExtResource( 6 )]
+
+position = Vector2( 5187.83, 2970.03 )
 
 

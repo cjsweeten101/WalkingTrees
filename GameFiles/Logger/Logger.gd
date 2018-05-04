@@ -24,10 +24,10 @@ func _physics_process(delta):
 	if Input.is_action_pressed("logger_move_left"):
 		direction.x = -1
 		facing = "left"
-	
 	_flip_chainsaw()
 	current_direction = direction.normalized()
 	var current_speed = direction.normalized() * max_speed
+	emit_signal("direction", direction)
 	move_and_slide(current_speed)
 
 func _flip_chainsaw():
@@ -39,4 +39,3 @@ func _flip_chainsaw():
 		if chainsaw.scale.x < 0:
 			chainsaw.scale.x *= -1
 			chainsaw.position.x *= -1
-	

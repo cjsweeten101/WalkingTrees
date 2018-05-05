@@ -1,8 +1,9 @@
 extends KinematicBody2D
 
-var speed = 900
+var speed = 40
 var idle = true
 var next_coord = Vector2()
+var last_coord = Vector2()
 var scared = true
 var default_magnitude = 10
 
@@ -30,7 +31,8 @@ func update_state():
 
 func agro_state(body):
 	if scared:
-		next_coord = calc_next_coord(body)
+		last_coord = position
+		calc_next_coord(body)
 		pass
 	else:
 		print("shouldn't hit yet")
@@ -41,7 +43,13 @@ func idle_state():
 	pass
 
 func calc_next_coord(body):
-	print(body.position)
+	if last_coord != next_coord:
+		print("calculating new coord")
+		var run_direction = Vector2(position - body.position).normalized()
+		var run_path = Vector2(randi() % 100 + 25, randi() % 100 + 25)
+		run_path.x *= sign(run_direction.x)
+		run_path.y *= sign(run_direction.y)
+		next_coord = run_path
 # Ok so FSM is basically this:
 # Idle->(player enters agro area)->agrostate(running if small, attacking if big etc. . . maybe add more states)
 # ->(Player leaves agro area)->Idle. 

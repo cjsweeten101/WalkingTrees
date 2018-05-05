@@ -27,7 +27,6 @@ func _physics_process(delta):
 	_flip_chainsaw()
 	current_direction = direction.normalized()
 	var current_speed = direction.normalized() * max_speed
-	emit_signal("direction", direction)
 	move_and_slide(current_speed)
 
 func _flip_chainsaw():

@@ -99,7 +99,7 @@ autostart = false
 [node name="growth_timer" type="Timer" parent="." index="5"]
 
 process_mode = 1
-wait_time = 10.0
+wait_time = 3.0
 one_shot = false
 autostart = false
 
@@ -110,10 +110,19 @@ wait_time = 1.0
 one_shot = false
 autostart = false
 
+[node name="attack_timer" type="Timer" parent="." index="7"]
+
+process_mode = 1
+wait_time = 0.5
+one_shot = false
+autostart = false
+
 [connection signal="timeout" from="walk_timer" to="." method="_on_walk_timer_timeout"]
 
 [connection signal="timeout" from="growth_timer" to="." method="_on_growth_timer_timeout"]
 
 [connection signal="timeout" from="change_from_idle" to="." method="_on_change_from_idle_timeout"]
+
+[connection signal="timeout" from="attack_timer" to="." method="_on_attack_timer_timeout"]
 
 

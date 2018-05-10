@@ -7,6 +7,7 @@ var idle = true
 var scared = true
 var run_direction = Vector2(0,0)
 var size = "small"
+var can_attack = true
 
 func _ready():
 	_set_tree_size(size)
@@ -41,10 +42,15 @@ func agro_state(body):
 	$growth_timer.paused = true
 	if scared:
 		calc_next_run_coord(body)
-		pass
 	else:
-		pass	
-	pass
+		attack(body)	
+
+func attack(body):
+	run_direction = Vector2(body.position - position).normalized()
+	if can_attack:
+		stick_attack()
+		can_attack = false
+		$attack_timer.start()
 
 func idle_state():
 	run_direction = Vector2(0,0)
@@ -64,14 +70,29 @@ func _on_growth_timer_timeout():
 		#For debug always set scared to false
 		#if randi()%2 > 0:
 		scared = false
-	elif size == "medium":
-		size = "large"
-		speed = 250
+		_increase_agro_size()
+	#elif size == "medium":
+	#	size = "large"
+	#	speed = 250
+	#	scared = false
 	_set_tree_size(size)
 	$growth_timer.stop()
 
+func _increase_agro_size():
+	var shape = CircleShape2D.new()
+	shape.set_radius(10000)
+	$AgroArea/CollisionShape2D.shape = shape
+	
 func stick_attack():
 	var attack = stick.instance()
+	if sign(run_direction.x) == -1:
+		attack.swing_left()
+		attack.position.x += -32
+	else:
+		attack.swing_right()
+		attack.position.x += 32
+	print(position)
+	print(attack.position)
 	add_child(attack)
 
 func _on_change_from_idle_timeout():
@@ -81,3 +102,7 @@ func _on_change_from_idle_timeout():
 func _on_walk_timer_timeout():
 	#Add timeout for running distance maybe.
 	pass # replace with function body
+
+
+func _on_attack_timer_timeout():
+	can_attack = true

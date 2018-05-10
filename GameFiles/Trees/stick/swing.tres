@@ -2,7 +2,7 @@
 
 [resource]
 
-resource_name = "swing_right"
+resource_name = "swing_left"
 length = 0.1
 loop = true
 step = 0.1
@@ -16,7 +16,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ -90.0, 0.0 ]
+"values": [ 90.0, 0.0 ]
 }
 tracks/1/type = "method"
 tracks/1/path = NodePath(".")
@@ -31,5 +31,17 @@ tracks/1/keys = {
 "args": [  ],
 "method": "_free"
 } ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -1, 1 ) ]
 }
 

@@ -1,65 +1,83 @@
 extends KinematicBody2D
 
-var speed = 40
+var stick = preload("res://Trees/stick/Stick.tscn")
+
+var speed = 350
 var idle = true
-var next_coord = Vector2()
-var last_coord = Vector2()
 var scared = true
-var default_magnitude = 10
-var run_direction = null
-var run_time = 1200
-var current_time = 0
+var run_direction = Vector2(0,0)
+var size = "small"
 
 func _ready():
-	last_coord = position
-	next_coord = last_coord
-	_set_tree_size("small")
+	_set_tree_size(size)
 
 func _set_tree_size(size):
 	if size == "small":
 		$small_collision.disabled = false
 		$small_collision/small_sprite.visible = true
+	elif size == "medium":
+		$medium_collision.disabled = false
+		$medium_collision/medium_sprite.visible = true
+	elif size == "large":
+		$large_collision.disabled = false
+		$large_collision/large_sprite.visible = true
 
 func _physics_process(delta):
 	update_state()
 	pass
 
 func update_state():
-	print(run_direction)
-	if current_time != run_time && run_direction != null:
-		move_and_slide(run_direction * speed)
-		print("runnin")
+	var agro = false
+	move_and_slide(run_direction * speed)
 	var bodies = $AgroArea.get_overlapping_bodies()
 	for body in bodies:
 		if body.is_in_group("loggers"):
+			agro = true
 			agro_state(body)
-		else:
-			print("idlin")
-			idle_state()
+	if agro == false:
+		idle_state()
 
 func agro_state(body):
+	$growth_timer.paused = true
 	if scared:
-		calc_next_coord(body)
+		calc_next_run_coord(body)
 		pass
 	else:
-		print("shouldn't hit yet")
 		pass	
 	pass
 
 func idle_state():
-	run_direction = null
+	run_direction = Vector2(0,0)
+	if $growth_timer.is_stopped():
+		$growth_timer.start()
+	else:
+		$growth_timer.paused = false
 
-func calc_next_coord(body):
-	if last_coord == next_coord:
-		print("calculating new coord")
-		run_direction = Vector2(position - body.position).normalized()
-		#var run_path = Vector2(randi() % 100 + 25, randi() % 100 + 25)
-		#run_path.x *= sign(run_direction.x)
-		#run_path.y *= sign(run_direction.y)
-		#next_coord = run_path
-# Ok so FSM is basically this:
-# Idle->(player enters agro area)->agrostate(running if small, attacking if big etc. . . maybe add more states)
-# ->(Player leaves agro area)->Idle. 
-# So should be pretty easy
-# So just use an enum?  Or maybe use methods, no need to add an extra class.  Would be weird in godot,
-# Also maybe I wont use an AI handler after all
+func calc_next_run_coord(body):
+	run_direction = Vector2(position - body.position).normalized()
+	
+
+func _on_growth_timer_timeout():
+	if size == "small":
+		size = "medium"
+		speed = 300
+		#For debug always set scared to false
+		#if randi()%2 > 0:
+		scared = false
+	elif size == "medium":
+		size = "large"
+		speed = 250
+	_set_tree_size(size)
+	$growth_timer.stop()
+
+func stick_attack():
+	var attack = stick.instance()
+	add_child(attack)
+
+func _on_change_from_idle_timeout():
+	#Timer for getting up from planted form
+	pass # replace with function body
+
+func _on_walk_timer_timeout():
+	#Add timeout for running distance maybe.
+	pass # replace with function body

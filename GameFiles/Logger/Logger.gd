@@ -5,6 +5,7 @@ var chainsaw = preload("res://Logger/Chainsaw/Chainsaw.tscn")
 var facing = "right"
 export var current_direction = Vector2()
 
+#TODO Add dash?
 func _ready():
 	chainsaw = chainsaw.instance()
 	chainsaw.position.x += 64

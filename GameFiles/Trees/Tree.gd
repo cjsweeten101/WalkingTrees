@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 var stick = preload("res://Trees/stick/Stick.tscn")
+var leaf = preload("res://Trees/leaf/Leaf.tscn")
 
 var speed = 350
 var idle = true
@@ -43,12 +44,15 @@ func agro_state(body):
 	if scared:
 		calc_next_run_coord(body)
 	else:
-		attack(body)	
+		attack(body, size)	
 
-func attack(body):
+func attack(body, size):
 	run_direction = Vector2(body.position - position).normalized()
 	if can_attack:
-		stick_attack()
+		if size == "medium":
+			stick_attack()
+		elif size == "large":
+			leaf_attack()
 		can_attack = false
 		$attack_timer.start()
 
@@ -69,12 +73,13 @@ func _on_growth_timer_timeout():
 		speed = 300
 		#For debug always set scared to false
 		#if randi()%2 > 0:
+		#scared = false
+		#_increase_agro_size()
+	elif size == "medium":
+		size = "large"
+		speed = 250
 		scared = false
 		_increase_agro_size()
-	#elif size == "medium":
-	#	size = "large"
-	#	speed = 250
-	#	scared = false
 	_set_tree_size(size)
 	$growth_timer.stop()
 
@@ -91,13 +96,15 @@ func stick_attack():
 	else:
 		attack.swing_right()
 		attack.position.x += 32
-	print(position)
-	print(attack.position)
+	add_child(attack)
+
+func leaf_attack():
+	var attack = leaf.instance()
+	attack.direction = run_direction
 	add_child(attack)
 
 func _on_change_from_idle_timeout():
-	#Timer for getting up from planted form
-	pass # replace with function body
+	pass
 
 func _on_walk_timer_timeout():
 	#Add timeout for running distance maybe.

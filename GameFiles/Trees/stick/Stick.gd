@@ -2,11 +2,9 @@ extends Sprite
 
 
 func _ready():
-	print("stick created")
 	print(position)
 	
 func _free():
-	print("deleting stick")
 	self.queue_free()
 
 

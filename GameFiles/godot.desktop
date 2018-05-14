@@ -1,0 +1,9 @@
+[Desktop Entry]
+Categories=Development;IDE;
+Encoding=UTF-8
+Name=Godot
+GenericName=Godot Game Engine
+Type=Application
+Exec=godot
+Icon=godot
+

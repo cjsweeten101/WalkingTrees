@@ -16,7 +16,8 @@ func _physics_process(delta):
 			get_tree().quit()
 		var attacks = get_tree().get_nodes_in_group("attacks")
 		for attack in attacks:
-			attack.connect("game_over", self, "on_game_over")
+			if !attack.is_connected("game_over", self, "on_game_over"):
+				attack.connect("game_over", self, "on_game_over")
 	else:
 		if Input.is_key_pressed(KEY_ENTER):
 			get_tree().reload_current_scene()

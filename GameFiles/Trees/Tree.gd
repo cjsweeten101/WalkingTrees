@@ -10,6 +10,7 @@ var run_direction = Vector2(0,0)
 var size = "small"
 var can_attack = true
 
+#
 func _ready():
 	_set_tree_size(size)
 

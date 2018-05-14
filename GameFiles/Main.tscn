@@ -7,7 +7,7 @@
 [ext_resource path="res://Map/TileSet1/tree_obstacle.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Trees/Tree.tscn" type="PackedScene" id=6]
 
-[node name="Main" type="Node2D"]
+[node name="Main" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 

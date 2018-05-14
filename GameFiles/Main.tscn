@@ -7,7 +7,7 @@
 [ext_resource path="res://Map/TileSet1/tree_obstacle.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Trees/Tree.tscn" type="PackedScene" id=6]
 
-[node name="Main" type="Node2D" index="0"]
+[node name="Main" type="Node2D"]
 
 script = ExtResource( 1 )
 
@@ -23,6 +23,7 @@ _sections_unfolded = [ "Visibility" ]
 [node name="Logger" parent="." index="1" instance=ExtResource( 3 )]
 
 position = Vector2( 5603.62, 3625.72 )
+_sections_unfolded = [ "Z Index" ]
 
 [node name="TileMap" type="TileMap" parent="." index="2"]
 
@@ -54,17 +55,45 @@ position = Vector2( 5292.34, 3493.12 )
 
 position = Vector2( 5187.83, 2970.03 )
 
-[node name="Game_over" type="Label" parent="." index="4"]
+[node name="game_over_camera" type="Camera2D" parent="." index="4"]
+
+anchor_mode = 1
+rotating = false
+current = false
+zoom = Vector2( 1, 1 )
+limit_left = -10000000
+limit_top = -10000000
+limit_right = 10000000
+limit_bottom = 10000000
+limit_smoothed = false
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = false
+smoothing_speed = 5.0
+offset_v = 0.0
+offset_h = 0.0
+drag_margin_left = 0.2
+drag_margin_top = 0.2
+drag_margin_right = 0.2
+drag_margin_bottom = 0.2
+editor_draw_screen = true
+editor_draw_limits = false
+editor_draw_drag_margin = false
+
+[node name="UI" type="Node2D" parent="." index="5"]
+
+z_index = 2
+_sections_unfolded = [ "Z Index" ]
+
+[node name="Game_over" type="Label" parent="UI" index="0"]
 
 visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 750.0
-margin_top = 466.0
-margin_right = 885.0
-margin_bottom = 497.0
+margin_right = 143.0
+margin_bottom = 31.0
 rect_scale = Vector2( 3, 3 )
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false

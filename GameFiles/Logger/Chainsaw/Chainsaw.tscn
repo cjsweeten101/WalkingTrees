@@ -8,10 +8,10 @@
 custom_solver_bias = 0.0
 extents = Vector2( 27, 12.7299 )
 
-[node name="Chainsaw" type="Sprite"]
+[node name="Chainsaw" type="Sprite" index="0"]
 
 scale = Vector2( 2, 2 )
-z_index = 2
+z_index = 1
 texture = ExtResource( 1 )
 script = ExtResource( 2 )
 _sections_unfolded = [ "Transform", "Z Index" ]

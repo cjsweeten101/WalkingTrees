@@ -26,10 +26,15 @@ func _physics_process(delta):
 
 func logger_win():
 	if get_tree().get_nodes_in_group("trees").size() == 0:
-		$Game_over.text = "You win! \n press enter to play again"
+		$UI/Game_over.text = "You win! \n press enter to play again"
 		on_game_over()
 		
 func on_game_over():
-	$Logger.queue_free()
+	if get_tree().get_nodes_in_group("trees").size() > 0:
+		$Logger.queue_free()
+
+	$game_over_camera.position = logger_camera_position
+	$game_over_camera.current = true
 	game_over = true
-	$Game_over.visible = true
+	$UI/Game_over.visible = true
+	$UI/Game_over.rect_position = logger_camera_position + Vector2(-256, -256)

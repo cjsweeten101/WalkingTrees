@@ -4,32 +4,48 @@ var stick = preload("res://Trees/stick/Stick.tscn")
 var leaf = preload("res://Trees/leaf/Leaf.tscn")
 
 var speed = 350
-var idle = true
+var idle = false
 var scared = true
 var run_direction = Vector2(0,0)
 var size = "small"
 var can_attack = true
+var has_init_direction = true
+var rand_direction = Vector2(0,0)
+var current_sprite = null
 
 #
 func _ready():
 	_set_tree_size(size)
+	randomize()
+	rand_direction = calc_rand_direction()
 
 func _set_tree_size(size):
 	if size == "small":
 		$small_collision.disabled = false
-		$small_collision/small_sprite.visible = true
+		if !idle:
+			$small_collision/small_sprite.visible = true
+		else:
+			$small_collision/small_planted.visible = true
 	elif size == "medium":
 		$medium_collision.disabled = false
-		$medium_collision/medium_sprite.visible = true
+		if !idle:
+			$medium_collision/medium_sprite.visible = true
+		else:
+			$medium_collision/medium_planted.visible = true
 	elif size == "large":
 		$large_collision.disabled = false
-		$large_collision/large_sprite.visible = true
+		if !idle:
+			$large_collision/large_sprite.visible = true
+		else:
+			$large_collision/large_planted.visible = true
 
 func _physics_process(delta):
+	if has_init_direction:
+		move_and_slide(rand_direction * speed)
 	update_state()
-	pass
 
 func update_state():
+	_set_tree_size(size)
 	var agro = false
 	move_and_slide(run_direction * speed)
 	var bodies = $AgroArea.get_overlapping_bodies()
@@ -37,10 +53,13 @@ func update_state():
 		if body.is_in_group("loggers"):
 			agro = true
 			agro_state(body)
-	if agro == false:
+	if agro == false && !has_init_direction:
+		
 		idle_state()
 
 func agro_state(body):
+	idle = false
+	has_init_direction = false
 	$growth_timer.paused = true
 	if scared:
 		calc_next_run_coord(body)
@@ -58,6 +77,7 @@ func attack(body, size):
 		$attack_timer.start()
 
 func idle_state():
+	idle = true
 	run_direction = Vector2(0,0)
 	if $growth_timer.is_stopped():
 		$growth_timer.start()
@@ -73,9 +93,9 @@ func _on_growth_timer_timeout():
 		size = "medium"
 		speed = 300
 		#For debug always set scared to false
-		#if randi()%2 > 0:
-		scared = false
-		_increase_agro_size()
+		if randi()%2 > 0:
+			scared = false
+			_increase_agro_size()
 	elif size == "medium":
 		size = "large"
 		speed = 250
@@ -108,12 +128,15 @@ func _on_change_from_idle_timeout():
 	pass
 
 func _on_walk_timer_timeout():
-	#Add timeout for running distance maybe.
-	pass # replace with function body
-
-
+	has_init_direction = false
+	
 func _on_attack_timer_timeout():
 	can_attack = true
 
-func pick_init_spot():
-	pass
+func calc_rand_direction():
+	var result = Vector2(randf(), randf())
+	if randi() % 2 > 0:
+		result.x *= -1
+	elif randi() % 2 > 0:
+		result.y *= -1
+	return result.normalized()

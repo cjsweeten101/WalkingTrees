@@ -48,6 +48,14 @@ region_enabled = true
 region_rect = Rect2( 0, 128, 64, 64 )
 _sections_unfolded = [ "Region", "Visibility" ]
 
+[node name="small_planted" type="Sprite" parent="small_collision" index="1"]
+
+visible = false
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 0, 128, 64, 46 )
+_sections_unfolded = [ "Region" ]
+
 [node name="medium_collision" type="CollisionShape2D" parent="." index="1"]
 
 shape = SubResource( 2 )
@@ -61,6 +69,14 @@ region_enabled = true
 region_rect = Rect2( 64, 64, 64, 128 )
 _sections_unfolded = [ "Region", "Visibility" ]
 
+[node name="medium_planted" type="Sprite" parent="medium_collision" index="1"]
+
+visible = false
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 64, 64, 64, 110 )
+_sections_unfolded = [ "Region" ]
+
 [node name="large_collision" type="CollisionShape2D" parent="." index="2"]
 
 shape = SubResource( 3 )
@@ -73,6 +89,14 @@ texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 128, 0, 64, 192 )
 _sections_unfolded = [ "Region", "Visibility" ]
+
+[node name="large_planted" type="Sprite" parent="large_collision" index="1"]
+
+visible = false
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 128, 0, 64, 174 )
+_sections_unfolded = [ "Region" ]
 
 [node name="AgroArea" type="Area2D" parent="." index="3"]
 
@@ -92,9 +116,9 @@ _sections_unfolded = [ "Visibility" ]
 [node name="walk_timer" type="Timer" parent="." index="4"]
 
 process_mode = 1
-wait_time = 2.0
-one_shot = false
-autostart = false
+wait_time = 5.0
+one_shot = true
+autostart = true
 
 [node name="growth_timer" type="Timer" parent="." index="5"]
 

@@ -9,15 +9,24 @@ func _ready():
 
 
 func _physics_process(delta):
-	if Input.is_key_pressed(KEY_ESCAPE):
-		get_tree().quit()
-	elif Input.is_key_pressed(KEY_ENTER) && game_over:
-		get_tree().reload_current_scene()
 	if !game_over:
 		logger_camera_position = $Logger.camera_position()
-	var attacks = get_tree().get_nodes_in_group("attacks")
-	for attack in attacks:
-		attack.connect("game_over", self, "on_game_over")
+		logger_win()
+		if Input.is_key_pressed(KEY_ESCAPE):
+			get_tree().quit()
+		var attacks = get_tree().get_nodes_in_group("attacks")
+		for attack in attacks:
+			attack.connect("game_over", self, "on_game_over")
+	else:
+		if Input.is_key_pressed(KEY_ENTER):
+			get_tree().reload_current_scene()
+		elif Input.is_key_pressed(KEY_ESCAPE):
+			get_tree().quit()
+
+func logger_win():
+	if get_tree().get_nodes_in_group("trees").size() == 0:
+		$Game_over.text = "You win! \n press enter to play again"
+		on_game_over()
 		
 func on_game_over():
 	$Logger.queue_free()

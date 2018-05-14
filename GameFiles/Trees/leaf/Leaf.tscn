@@ -10,7 +10,9 @@
 custom_solver_bias = 0.0
 extents = Vector2( 31.4286, 32 )
 
-[node name="Sprite" type="Sprite" index="0"]
+[node name="Sprite" type="Sprite" index="0" groups=[
+"attacks",
+]]
 
 modulate = Color( 0.325989, 0.851562, 0, 1 )
 scale = Vector2( 0.3, 0.6 )

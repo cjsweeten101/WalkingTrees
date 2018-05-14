@@ -73,8 +73,8 @@ func _on_growth_timer_timeout():
 		speed = 300
 		#For debug always set scared to false
 		#if randi()%2 > 0:
-		#scared = false
-		#_increase_agro_size()
+		scared = false
+		_increase_agro_size()
 	elif size == "medium":
 		size = "large"
 		speed = 250
@@ -113,3 +113,6 @@ func _on_walk_timer_timeout():
 
 func _on_attack_timer_timeout():
 	can_attack = true
+
+func pick_init_spot():
+	pass

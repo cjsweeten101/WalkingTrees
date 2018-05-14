@@ -39,3 +39,9 @@ func _flip_chainsaw():
 		if chainsaw.scale.x < 0:
 			chainsaw.scale.x *= -1
 			chainsaw.position.x *= -1
+
+func camera_position():
+	return $Camera2D.global_position
+
+func get_camera():
+	return $Camera2D

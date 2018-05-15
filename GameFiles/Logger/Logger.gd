@@ -5,7 +5,7 @@ var chainsaw = preload("res://Logger/Chainsaw/Chainsaw.tscn")
 var facing = "right"
 export var current_direction = Vector2()
 
-#TODO Add dash?
+#TODO Add dash...
 func _ready():
 	chainsaw = chainsaw.instance()
 	chainsaw.position.x += 64
@@ -25,6 +25,8 @@ func _physics_process(delta):
 	if Input.is_action_pressed("logger_move_left"):
 		direction.x = -1
 		facing = "left"
+	if Input.is_action_pressed("logger_dash"):
+		max_speed += 500
 	_flip_chainsaw()
 	current_direction = direction.normalized()
 	var current_speed = direction.normalized() * max_speed

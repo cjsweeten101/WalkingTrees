@@ -1,32 +1,35 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
-[ext_resource path="res://test_background.png" type="Texture" id=2]
+[ext_resource path="res://Map/background.png" type="Texture" id=2]
 [ext_resource path="res://Logger/Logger.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Map/TileSet1/test_tiles.tres" type="TileSet" id=4]
-[ext_resource path="res://Map/TileSet1/tree_obstacle.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Trees/Tree.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Map/the_guy.tres" type="TileSet" id=4]
+[ext_resource path="res://Map/TileSet1/log_obstacle.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Map/TileSet1/bush_obstacle.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Trees/Tree.tscn" type="PackedScene" id=7]
 
-[node name="Main" type="Node2D"]
+[node name="Main" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 
 [node name="Background" type="Sprite" parent="." index="0"]
 
-visible = false
 show_behind_parent = true
-scale = Vector2( 4.41365, 4.109 )
+position = Vector2( -14817.9, -6394.72 )
+scale = Vector2( 58.684, 26.7526 )
+z_index = -1
 texture = ExtResource( 2 )
 centered = false
-_sections_unfolded = [ "Visibility" ]
+_sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
 
 [node name="Logger" parent="." index="1" instance=ExtResource( 3 )]
 
-position = Vector2( 5603.62, 3625.72 )
+position = Vector2( 4540.79, 2295.89 )
 _sections_unfolded = [ "Z Index" ]
 
 [node name="TileMap" type="TileMap" parent="." index="2"]
 
+editor/display_folded = true
 mode = 0
 tile_set = ExtResource( 4 )
 cell_size = Vector2( 64, 64 )
@@ -43,25 +46,188 @@ collision_layer = 1
 collision_mask = 1
 occluder_light_mask = 1
 format = 1
-tile_data = PoolIntArray(  )
+tile_data = PoolIntArray( -983029, 0, 0, -982976, 0, 0, -982961, 0, 0, -982941, 0, 0, -982931, 0, 0, -982914, 0, 0, -982908, 0, 0, -917502, 0, 0, -917477, 0, 0, -917458, 0, 0, -917416, 0, 0, -851929, 0, 0, -720754, 0, 0, -589830, 0, 0, -327681, 0, 0, -393212, 0, 0, -393207, 0, 0, -393202, 0, 0, -393197, 0, 0, -393192, 0, 0, -393186, 0, 0, -393180, 0, 0, -393174, 0, 0, -393170, 0, 0, -393165, 0, 0, -393160, 0, 0, -393154, 0, 0, -393149, 0, 0, -393145, 0, 0, -393140, 0, 0, -393136, 0, 0, -393131, 0, 0, -393126, 0, 0, -393121, 0, 0, -393116, 0, 0, -393111, 0, 0, -393107, 0, 0, -393102, 0, 0, -393097, 0, 0, -393091, 0, 0, -393086, 0, 0, -393082, 0, 0, -196624, 0, 0, -131077, 0, 0, -196464, 0, 0, -65401, 0, 0, 131067, 0, 0, 262279, 0, 0, 458739, 0, 0, 458747, 0, 0, 458899, 0, 0, 589959, 0, 0, 786427, 0, 0, 852103, 0, 0, 1114107, 0, 0, 1048722, 0, 0, 1114247, 0, 0, 1310702, 0, 0, 1441787, 0, 0, 1441927, 0, 0, 1573009, 0, 0, 1769467, 0, 0, 1704071, 0, 0, 1834995, 0, 0, 2097134, 0, 0, 2031751, 0, 0, 2162683, 0, 0, 2162834, 0, 0, 2228359, 0, 0, 2490363, 0, 0, 2490503, 0, 0, 2686963, 0, 0, 2818043, 0, 0, 2818183, 0, 0, 2883736, 0, 0, 3145723, 0, 0, 3080327, 0, 0, 3276782, 0, 0, 3407867, 0, 0, 3408007, 0, 0, 3539087, 0, 0, 3735547, 0, 0, 3735687, 0, 0, 3866780, 0, 0, 3997691, 0, 0, 4128752, 0, 0, 4063367, 0, 0, 4259835, 0, 0, 4391047, 0, 0, 4391058, 0, 0, 4587515, 0, 0, 4784113, 0, 0, 4849659, 0, 0, 4784129, 0, 0, 4784136, 0, 0, 4784142, 0, 0, 4784148, 0, 0, 4784153, 0, 0, 4784158, 0, 0, 4784163, 0, 0, 4784168, 0, 0, 4784173, 0, 0, 4784178, 0, 0, 4784183, 0, 0, 4784187, 0, 0, 4784191, 0, 0, 4784196, 0, 0, 4784200, 0, 0, 4784204, 0, 0, 4784210, 0, 0, 4784213, 0, 0, 4784218, 0, 0, 4784222, 0, 0, 4784227, 0, 0, 4784231, 0, 0, 4784235, 0, 0, 4784240, 0, 0, 4784245, 0, 0, 4784249, 0, 0, 4784254, 0, 0, 4784259, 0, 0, 4784263, 0, 0, 4849820, 0, 0, 5308561, 0, 0, 5373952, 0, 0, 5439511, 0, 0, 5570549, 0, 0, 5570550, 0, 0, 5505069, 0, 0, 5505086, 0, 0, 5505132, 0, 0, 5505144, 0, 0, 5505157, 0, 0, 5570635, 0, 0, 5570645, 0, 0, 5570656, 0, 0, 5701646, 0, 0, 5767201, 0, 0, 5832759, 0, 0, 6029381, 0, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
 
-[node name="tree_obstacle" parent="TileMap" index="0" instance=ExtResource( 5 )]
+[node name="log_obstacle" parent="TileMap" index="0" instance=ExtResource( 5 )]
 
-position = Vector2( 5292.34, 3493.12 )
+position = Vector2( 4830.27, 3602.48 )
+
+[node name="log_obstacle2" parent="TileMap" index="1" instance=ExtResource( 5 )]
+
+position = Vector2( 4830.27, 3602.48 )
+
+[node name="log_obstacle8" parent="TileMap" index="2" instance=ExtResource( 5 )]
+
+position = Vector2( 4830.27, 3602.48 )
+
+[node name="log_obstacle9" parent="TileMap" index="3" instance=ExtResource( 5 )]
+
+position = Vector2( 4830.27, 3602.48 )
+
+[node name="log_obstacle10" parent="TileMap" index="4" instance=ExtResource( 5 )]
+
+position = Vector2( 980.215, 4099.26 )
+
+[node name="log_obstacle18" parent="TileMap" index="5" instance=ExtResource( 5 )]
+
+position = Vector2( 6091.32, 4395.42 )
+
+[node name="log_obstacle19" parent="TileMap" index="6" instance=ExtResource( 5 )]
+
+position = Vector2( 3750.72, 851.083 )
+
+[node name="log_obstacle20" parent="TileMap" index="7" instance=ExtResource( 5 )]
+
+position = Vector2( 942.001, 1510.27 )
+
+[node name="log_obstacle14" parent="TileMap" index="8" instance=ExtResource( 5 )]
+
+position = Vector2( 7753.63, 2742.67 )
+
+[node name="log_obstacle15" parent="TileMap" index="9" instance=ExtResource( 5 )]
+
+position = Vector2( 2441.9, 1548.49 )
+
+[node name="log_obstacle16" parent="TileMap" index="10" instance=ExtResource( 5 )]
+
+position = Vector2( 5709.19, 994.385 )
+
+[node name="log_obstacle17" parent="TileMap" index="11" instance=ExtResource( 5 )]
+
+position = Vector2( 6607.21, 2694.9 )
+
+[node name="log_obstacle11" parent="TileMap" index="12" instance=ExtResource( 5 )]
+
+position = Vector2( 4037.33, 1481.61 )
+
+[node name="log_obstacle12" parent="TileMap" index="13" instance=ExtResource( 5 )]
+
+position = Vector2( 6072.22, 2102.59 )
+
+[node name="log_obstacle13" parent="TileMap" index="14" instance=ExtResource( 5 )]
+
+position = Vector2( 4983.12, 2742.67 )
+
+[node name="log_obstacle3" parent="TileMap" index="15" instance=ExtResource( 5 )]
+
+position = Vector2( 3525.86, 2982.39 )
+
+[node name="log_obstacle5" parent="TileMap" index="16" instance=ExtResource( 5 )]
+
+position = Vector2( 2273.17, 2438.99 )
+
+[node name="log_obstacle6" parent="TileMap" index="17" instance=ExtResource( 5 )]
+
+position = Vector2( 3628.82, 3834.67 )
+
+[node name="log_obstacle7" parent="TileMap" index="18" instance=ExtResource( 5 )]
+
+position = Vector2( 2850.23, 3173.88 )
+
+[node name="log_obstacle4" parent="TileMap" index="19" instance=ExtResource( 5 )]
+
+position = Vector2( 5286.74, 3216.24 )
+
+[node name="tree_obstacle" parent="TileMap" index="20" instance=ExtResource( 6 )]
+
+position = Vector2( 4721.05, 915.916 )
+
+[node name="tree_obstacle11" parent="TileMap" index="21" instance=ExtResource( 6 )]
+
+position = Vector2( 7873.7, 4106.78 )
+
+[node name="tree_obstacle15" parent="TileMap" index="22" instance=ExtResource( 6 )]
+
+position = Vector2( 1902.78, 4259.63 )
+
+[node name="tree_obstacle16" parent="TileMap" index="23" instance=ExtResource( 6 )]
+
+position = Vector2( 928.325, 2272.51 )
+
+[node name="tree_obstacle12" parent="TileMap" index="24" instance=ExtResource( 6 )]
+
+position = Vector2( 7959.68, 1221.63 )
+
+[node name="tree_obstacle13" parent="TileMap" index="25" instance=ExtResource( 6 )]
+
+position = Vector2( 6937.46, 3581.34 )
+
+[node name="tree_obstacle14" parent="TileMap" index="26" instance=ExtResource( 6 )]
+
+position = Vector2( 7138.08, 2196.08 )
+
+[node name="tree_obstacle8" parent="TileMap" index="27" instance=ExtResource( 6 )]
+
+position = Vector2( 1568.41, 3189.64 )
+
+[node name="tree_obstacle17" parent="TileMap" index="28" instance=ExtResource( 6 )]
+
+position = Vector2( 4281.59, 4259.63 )
+
+[node name="tree_obstacle18" parent="TileMap" index="29" instance=ExtResource( 6 )]
+
+position = Vector2( 4358.02, 3399.82 )
+
+[node name="tree_obstacle9" parent="TileMap" index="30" instance=ExtResource( 6 )]
+
+position = Vector2( 5466.23, 1813.94 )
+
+[node name="tree_obstacle10" parent="TileMap" index="31" instance=ExtResource( 6 )]
+
+position = Vector2( 6421.57, 1240.73 )
+
+[node name="tree_obstacle5" parent="TileMap" index="32" instance=ExtResource( 6 )]
+
+position = Vector2( 3030.09, 1126.09 )
+
+[node name="tree_obstacle6" parent="TileMap" index="33" instance=ExtResource( 6 )]
+
+position = Vector2( 1889.07, 1215.19 )
+
+[node name="tree_obstacle7" parent="TileMap" index="34" instance=ExtResource( 6 )]
+
+position = Vector2( 2847.51, 3720.52 )
+
+[node name="tree_obstacle2" parent="TileMap" index="35" instance=ExtResource( 6 )]
+
+position = Vector2( 5481.02, 3650.29 )
+
+[node name="tree_obstacle3" parent="TileMap" index="36" instance=ExtResource( 6 )]
+
+position = Vector2( 3411.67, 2305.61 )
+
+[node name="tree_obstacle4" parent="TileMap" index="37" instance=ExtResource( 6 )]
+
+position = Vector2( 5902.38, 2772.46 )
 
 [node name="Trees" type="Node2D" parent="." index="3"]
 
-[node name="Tree1" parent="Trees" index="0" instance=ExtResource( 6 )]
+[node name="Tree1" parent="Trees" index="0" instance=ExtResource( 7 )]
 
-position = Vector2( 6179.76, 3451.19 )
+position = Vector2( 5056.75, 1984.97 )
 
-[node name="Tree2" parent="Trees" index="1" instance=ExtResource( 6 )]
+[node name="Tree4" parent="Trees" index="1" instance=ExtResource( 7 )]
 
-position = Vector2( 5613.47, 3151.39 )
+position = Vector2( 4138.76, 2519.69 )
 
-[node name="Tree3" parent="Trees" index="2" instance=ExtResource( 6 )]
+[node name="Tree6" parent="Trees" index="2" instance=ExtResource( 7 )]
 
-position = Vector2( 5606.65, 4069.31 )
+position = Vector2( 4528.21, 2711.33 )
+
+[node name="Tree5" parent="Trees" index="3" instance=ExtResource( 7 )]
+
+position = Vector2( 4938.81, 2483.99 )
+
+[node name="Tree2" parent="Trees" index="4" instance=ExtResource( 7 )]
+
+position = Vector2( 4539.11, 1869.87 )
+
+[node name="Tree3" parent="Trees" index="5" instance=ExtResource( 7 )]
+
+position = Vector2( 4014.03, 2041.87 )
 
 [node name="game_over_camera" type="Camera2D" parent="." index="4"]
 

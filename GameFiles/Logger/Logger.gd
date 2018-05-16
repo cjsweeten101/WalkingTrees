@@ -8,7 +8,7 @@ export var current_direction = Vector2()
 
 #TODO Add dash...
 func _ready():
-	$dash_label.text = "can dash: true"
+	$UI/dash_label.text = "can dash: true"
 	chainsaw = chainsaw.instance()
 	chainsaw.position.x += 64
 	add_child(chainsaw)
@@ -29,7 +29,7 @@ func _physics_process(delta):
 		facing = "left"
 	if Input.is_action_pressed("logger_dash") && can_dash:
 		can_dash = false
-		$dash_label.text = "can dash: false"
+		$UI/dash_label.text = "can dash: false"
 		max_speed = 1500
 		$dash_cooldown.start()
 		$dash_duration.start()
@@ -59,5 +59,5 @@ func _on_dash_duration_timeout():
 
 
 func _on_dash_cooldown_timeout():
-	$dash_label.text = "can dash: true"
+	$UI/dash_label.text = "can dash: true"
 	can_dash = true

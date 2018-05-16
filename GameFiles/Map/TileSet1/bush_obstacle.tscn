@@ -1,0 +1,58 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Map/TileSet1/bush_obstacle2.png" type="Texture" id=1]
+[ext_resource path="res://Map/TileSet1/tree_obstacle.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 45, 40 )
+
+[sub_resource type="CapsuleShape2D" id=2]
+
+custom_solver_bias = 0.0
+radius = 232.62
+height = 84.874
+
+[node name="tree_obstacle" type="Sprite"]
+
+position = Vector2( 796, 382 )
+z_index = 1
+texture = ExtResource( 1 )
+script = ExtResource( 2 )
+_sections_unfolded = [ "Z Index" ]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" index="0"]
+
+position = Vector2( 2, 278 )
+shape = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Area2D" type="Area2D" parent="." index="1"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+
+position = Vector2( 3.02551, 5.10605 )
+rotation = 1.5708
+shape = SubResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+

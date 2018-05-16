@@ -23,7 +23,7 @@ extents = Vector2( 32, 96 )
 custom_solver_bias = 0.0
 radius = 336.149
 
-[node name="Tree" type="KinematicBody2D" index="0" groups=[
+[node name="Tree" type="KinematicBody2D" groups=[
 "trees",
 ]]
 

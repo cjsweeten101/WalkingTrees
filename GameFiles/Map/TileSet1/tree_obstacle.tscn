@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Map/TileSet1/bush_obstacle2.png" type="Texture" id=1]
+[ext_resource path="res://Map/TileSet1/grass_tile2.png" type="Texture" id=2]
 
 [node name="tileset" type="Node2D"]
 
@@ -22,5 +23,10 @@ bounce = 0.0
 
 build_mode = 0
 polygon = PoolVector2Array( 47, 318, 47, 239, 77, 217, 89, 199, 161, 177, 228, 139, 278, 40, 288, -1, 255, -111, 213, -162, 128, -193, 44, -221, 14, -232, -13, -233, -89, -205, -199, -164, -243, -120, -278, -24, -285, 1, -282, 23, -239, 104, -203, 154, -161, 176, -119, 189, -74, 204, -74, 216, -43, 239, -43, 318 )
+
+[node name="grass_floor" type="Sprite" parent="." index="1"]
+
+position = Vector2( 525, 215 )
+texture = ExtResource( 2 )
 
 

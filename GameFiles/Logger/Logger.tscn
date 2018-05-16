@@ -14,7 +14,7 @@ extents = Vector2( 32, 14 )
 custom_solver_bias = 0.0
 extents = Vector2( 32, 64 )
 
-[node name="Logger" type="KinematicBody2D" groups=[
+[node name="Logger" type="KinematicBody2D" index="0" groups=[
 "loggers",
 ]]
 

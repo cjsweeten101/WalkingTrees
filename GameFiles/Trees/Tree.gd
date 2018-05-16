@@ -24,14 +24,23 @@ func _set_tree_size(size):
 		$small_collision.disabled = false
 		if !idle:
 			$small_collision/small_sprite.visible = true
+			current_sprite = $small_collision/small_sprite
+			$small_collision/small_planted.visible = false
 		else:
 			$small_collision/small_planted.visible = true
+			$small_collision/small_sprite.visible = false
 	elif size == "medium":
+		$small_collision.disabled = true
+		$small_collision/small_sprite.visible = false
+		$small_collision/small_planted.visible = false
 		$medium_collision.disabled = false
 		if !idle:
 			$medium_collision/medium_sprite.visible = true
+			current_sprite = $medium_collision/medium_sprite
+			$medium_collision/medium_planted.visible = false
 		else:
 			$medium_collision/medium_planted.visible = true
+			$medium_collision/medium_sprite.visible = false
 	elif size == "large":
 		$large_collision.disabled = false
 		if !idle:
@@ -40,6 +49,12 @@ func _set_tree_size(size):
 			$large_collision/large_planted.visible = true
 
 func _physics_process(delta):
+	if run_direction.x < 0:
+		if current_sprite.scale.x > 0:
+			current_sprite.scale.x *= -1
+	elif run_direction.x > 0:
+		if current_sprite.scale.x < 0:
+			current_sprite.scale.x *= -1
 	if has_init_direction:
 		move_and_slide(rand_direction * speed)
 	update_state()

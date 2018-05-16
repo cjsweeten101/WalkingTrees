@@ -6,7 +6,6 @@ var facing = "right"
 var can_dash = true
 export var current_direction = Vector2()
 
-#TODO Add dash...
 func _ready():
 	$UI/dash_label.text = "can dash: true"
 	chainsaw = chainsaw.instance()

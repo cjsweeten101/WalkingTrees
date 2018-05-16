@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tree_sprite_sheet.png-133b06ef11f4e85d1f42dd86ca91e3ec.stex"
+path="res://.import/chainsaw_green.png-65b8229d791dedf3eae0fb2496af91a9.stex"
 
 [deps]
 
-source_file="res://Trees/tree_sprite_sheet.png"
-source_md5="d08448d3505ae4528b8e413ba6ff69bf"
+source_file="res://Logger/Chainsaw/chainsaw_green.png"
+source_md5="123719eb36eb249f3a77f0951d61ca78"
 
-dest_files=[ "res://.import/tree_sprite_sheet.png-133b06ef11f4e85d1f42dd86ca91e3ec.stex" ]
-dest_md5="433250985d089d270d6776016707ad53"
+dest_files=[ "res://.import/chainsaw_green.png-65b8229d791dedf3eae0fb2496af91a9.stex" ]
+dest_md5="ab050264d28b9e30b50f9137358b10e8"
 
 [params]
 

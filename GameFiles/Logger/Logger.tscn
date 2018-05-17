@@ -7,12 +7,12 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 32, 14 )
+extents = Vector2( 26, 11 )
 
 [sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
-extents = Vector2( 32, 64 )
+extents = Vector2( 28, 86 )
 
 [node name="Logger" type="KinematicBody2D" index="0" groups=[
 "loggers",
@@ -27,11 +27,16 @@ current_direction = Vector2( 0, 0 )
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
+scale = Vector2( 1.5, 1.5 )
 texture = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
 
-position = Vector2( 0, 50 )
+position = Vector2( -1, 85 )
 shape = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]
 
@@ -73,7 +78,7 @@ audio_bus_name = "Master"
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" index="0"]
 
-position = Vector2( 0, 50 )
+position = Vector2( -1, 85 )
 shape = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]
 
@@ -81,6 +86,7 @@ _sections_unfolded = [ "Transform" ]
 "loggers",
 ]]
 
+position = Vector2( -1, -12 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -94,6 +100,9 @@ audio_bus_name = "Master"
 ]]
 
 shape = SubResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="dash_duration" type="Timer" parent="." index="5"]
 
@@ -108,34 +117,6 @@ process_mode = 1
 wait_time = 2.0
 one_shot = false
 autostart = false
-
-[node name="UI" type="Node2D" parent="." index="7"]
-
-z_index = 4
-_sections_unfolded = [ "Z Index" ]
-
-[node name="dash_label" type="Label" parent="UI" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = -150.0
-margin_top = -500.0
-margin_right = -52.0
-margin_bottom = -486.0
-rect_scale = Vector2( 3, 3 )
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-uppercase = true
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "Rect" ]
 
 [connection signal="timeout" from="dash_duration" to="." method="_on_dash_duration_timeout"]
 

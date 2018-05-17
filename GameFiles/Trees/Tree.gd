@@ -43,10 +43,11 @@ func _set_tree_size(size):
 			$medium_collision/medium_sprite.visible = false
 	elif size == "large":
 		$large_collision.disabled = false
+		$medium_collision.disabled = true
+		$medium_collision/medium_sprite.visible = false
+		$medium_collision/medium_planted.visible = false
 		if !idle:
 			$large_collision/large_sprite.visible = true
-		else:
-			$large_collision/large_planted.visible = true
 
 func _physics_process(delta):
 	if run_direction.x < 0:

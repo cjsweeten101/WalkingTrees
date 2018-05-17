@@ -7,10 +7,10 @@ path="res://.import/test_logger_sprite.png-c70c6765f0771a71034c5abb0c89e082.stex
 [deps]
 
 source_file="res://Logger/test_logger_sprite.png"
-source_md5="81324cea05be5b9a7ac7af081bf1bf91"
+source_md5="cb5c23d728034b23565e6533adb98b7f"
 
 dest_files=[ "res://.import/test_logger_sprite.png-c70c6765f0771a71034c5abb0c89e082.stex" ]
-dest_md5="541ee2c884079aeb0dbf984289f9829c"
+dest_md5="4b5d1fbe8b9f9fe1acd52df2622ed275"
 
 [params]
 

@@ -7,9 +7,8 @@ var can_dash = true
 export var current_direction = Vector2()
 
 func _ready():
-	$UI/dash_label.text = "can dash: true"
 	chainsaw = chainsaw.instance()
-	chainsaw.position.x += 64
+	chainsaw.position.x += 54
 	add_child(chainsaw)
 	z_index = 1
 
@@ -23,12 +22,16 @@ func _physics_process(delta):
 	if Input.is_action_pressed("logger_move_right"):
 		direction.x = 1
 		facing = "right"
+		if $Sprite.scale.x < 0:
+			$Sprite.scale.x *= -1
 	if Input.is_action_pressed("logger_move_left"):
 		direction.x = -1
 		facing = "left"
+		if $Sprite.scale.x > 0:
+			$Sprite.scale.x *= -1
 	if Input.is_action_pressed("logger_dash") && can_dash:
 		can_dash = false
-		$UI/dash_label.text = "can dash: false"
+		chainsaw.texture = load("res://Logger/Chainsaw/chainsaw_red.png")
 		max_speed = 1500
 		$dash_cooldown.start()
 		$dash_duration.start()
@@ -58,5 +61,5 @@ func _on_dash_duration_timeout():
 
 
 func _on_dash_cooldown_timeout():
-	$UI/dash_label.text = "can dash: true"
+	chainsaw.texture = load("res://Logger/Chainsaw/chainsaw_green.png")
 	can_dash = true

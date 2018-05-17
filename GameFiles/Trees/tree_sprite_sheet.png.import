@@ -7,10 +7,10 @@ path="res://.import/tree_sprite_sheet.png-133b06ef11f4e85d1f42dd86ca91e3ec.stex"
 [deps]
 
 source_file="res://Trees/tree_sprite_sheet.png"
-source_md5="d08448d3505ae4528b8e413ba6ff69bf"
+source_md5="f6d3fdac631010f88ae1b79ca3a49841"
 
 dest_files=[ "res://.import/tree_sprite_sheet.png-133b06ef11f4e85d1f42dd86ca91e3ec.stex" ]
-dest_md5="433250985d089d270d6776016707ad53"
+dest_md5="32f3e6cb83cae841128c0015559130c6"
 
 [params]
 
